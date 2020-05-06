@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            /* https://mn350.org/wp-content/uploads/2020/04/coc_general_mills_logo.jpg */
+            :root {
+                font-size: 10px;
+            }
+            .custom-container {
+                max-width: 1170px;
+                margin: auto;
+                font-size: 2.5rem;
+            }
+            .header {
+                position: relative;
+            }
+
+            .header_bg {
+                width: 95%;
+            }
+
+            .header_content {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .header_bottom {
+                display: flex;
+                justify-content: space-between;
+                margin: 1em;
+            }
+
+            .header_text {
+                text-align: center;
+                color: white;
+            }
+
+            .header_tags {
+                display: flex;
+                align-items: flex-end;
+                color: rgb(64, 215, 212);
+                font-weight: bold;
+                /* transform: translateY(-2em); */
+                font-size: 1.4em;
+            }
+
+            .header_inset {
+                background-color: rgb(255, 97, 18);
+                border-radius: 1.5em;
+                color: white;
+                border: 0.25em solid white;
+                padding: 1em;
+                max-width: 35%;
+                font-weight: bold;
+            }
+
+            .header_inset--question {
+                float: left;
+            }
+
+            .article_head {
+                color: rgb(143, 165, 59);
+                text-align: center;
+            }
+
+            .article_intro {
+                font-size: inherit;
+            }
+
+            .main {
+                display: flex;
+            }
+
+            .main_content {
+                flex: 3;
+                padding-right: 1em;
+            }
+
+            .article_splitGraphic {
+                display: flex;
+                justify-content: space-between;
+                color: rgb(143, 165, 59);
+            }
+
+            .article_splitGraphic--graphic{
+                flex:1; 
+                padding:1em;
+                max-width: 60%;
+            }
+
+            .article_splitGraphic--text{
+                color: white;
+                background-color: rgb(255, 97, 18);
+                padding:1em;
+                flex: 2;
+                font-size: inherit;
+            }
+
+            .main_vert-sidebar {
+                flex: 1;
+                border-left: 2px solid rgb(255, 97, 18);
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .main_vert-sidebar--text {
+                text-align: center;
+            }
+
+            .main_vert-sidebar--logo {
+                max-height: 100px;
+                max-width: 100px;
+                margin: 1em;
+            }
+
+            .main_content--inset {
+                margin-right: 1em;
+                max-width: 40%;
+                background-color: rgb(143, 165, 59);
+                padding: .5em;
+                padding-left: 1.5em;
+                color: white;
+                border-radius: 1.5em;
+                float: left;
+                font-weight: bold;
+            }
+
+            .main_text--green {
+                color: rgb(143, 165, 59);
+                font-weight: bold;
+                font-size: inherit;
+            }
+
+            .button-bar {
+                display: flex;
+                justify-content: space-between;
+                margin: 2em 0;
+            }
+
+            .button-bar_button {
+                color:white;
+                background-color: rgb(255, 97, 18);
+                text-decoration: none;
+                font-weight: bold;
+                padding: 0.75em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .footer_notes {
+                font-size: 0.75em;
+            }
+
+            .footer_logos {
+                border-top: 2px solid rgb(143, 165, 59);
+            }
+            
+            /* util classes */
+            .tab {
+                margin-left: 2em;
+            }
+
+            .logo-bar {
+                align-items: center;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .logo-item {
+                max-height: 120px;
+                max-width: 120px;
+                margin: 1em;
+            }
+
+            .bold-diminish {
+                font-weight: bold;
+            }
+
+            .rounded{
+                border-radius: 1.5em;
+            }
+
+            #force-font-1, #force-font-2, #force-font-3{
+                font-size: inherit;
+            }
+
+/* Queries */
+            @media screen and (max-width: 1200px){
+                .custom-container {
+                    font-size: 2rem;
+                    padding: 1rem;
+                }
+            }
+
+            @media screen and (max-width: 990px){
+                .header_inset {
+                    display:none;
+                }
+                
+                .button-bar_button {
+                    display:block;
+                    text-align: center;
+                    padding: 0.5em;
+                }
+
+                .header_bg {
+                    width:100%;
+                }
+            }
+
+            @media screen and (max-width: 700px){
+                .header_text {
+                    color: rgb(255, 97, 18);
+                }
+                .header_bottom {
+                    display: none;
+                }
+
+                .article_splitGraphic {
+                    flex-direction: column-reverse;
+                    align-items: center;
+                }
+
+                .main {
+                    flex-direction: column;
+                }
+
+                .main_vert-sidebar {
+                    flex-direction: row;
+                    flex-wrap: wrap;
+
+                    border-bottom:2px solid rgb(255, 97, 18);
+                    border-left: none;
+                    border-top:2px solid rgb(255, 97, 18);
+                }
+
+                .main_vert-sidebar--text {
+                    width: 100%;
+                }
+
+                .footer_logos {
+                    flex-wrap: wrap;
+                }
+
+                .button-bar {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .button-bar_button{
+                    max-width: 60%;
+                    font-size: 1.25em;
+                    margin: 1em;
+                }
+
+                .footer_sponsors {
+                    max-width: 100%;
+                }
+            }
+
+            @media screen and (max-width: 425px){
+                .header {
+                    font-size: .75em;
+                }
+            }
+        </style>
+
+        </style>
+    </head>
+    <!-- <div id="master_of_page" style="--brown: rgb(154, 100, 25); --green: rgb(143, 165, 59); --red: rgb(255, 97, 18); --teal: rgb(64, 215, 212);"> -->
+
+    <body>
+        <div class="custom-container">
+            <header class="header">
+                <img
+                    src="https://mn350.org/wp-content/uploads/2020/04/coc_refinery_header.jpg"
+                    alt="picture of a refinery"
+                    class="header_bg"
+                />
+                <div class="header_content">
+                    <h1 class="header_text">
+                        Tell the Minnesota Chamber of Commerce: <br />
+                        Climate Change is <br />
+                        BAD for BUSINESS
+                    </h1>
+                    <div class="header_bottom">
+                        <div class="header_tags">
+                            #FriendToBigOil #WhyChamberWhy
+                        </div>
+                        <div class="header_inset">
+                            Why is the Minnesota Chamber trying to kill climate
+                            solutions supported by Minnesotans and our business
+                            community? (Hint: Ask the fossil fuel industry.)
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <article class='article'>
+                <h2 class="article_head">
+                    Who’s doing the dirty work for a dying industry?
+                </h2>
+                <p id='force-font-1' class="article_intro">
+                    As Minnesotans, we’re proud of our hometown corporations
+                    like Target, Cargill, Best Buy, 3M and General Mills –
+                    especially as these businesses show up to support our
+                    communities in this time of need. All of these businesses
+                    have also asked Minnesota’s lawmakers to pass real solutions
+                    to the climate change crisis we all face.
+                </p>
+
+                <div class="article_splitGraphic">
+                    <img
+                        class='article_splitGraphic--graphic'
+                        src="https://mn350.org/wp-content/uploads/2020/04/coc_flint_hills_logo.jpg"
+                        alt="Flint Hills Resources logo"
+                    />
+                    <p
+                    id='force-font-2'
+                    class='article_splitGraphic--text bold-diminish rounded'
+                    >
+                        A lobbyist for flint Hills Resources and Koch
+                        Cos. sits on the Minnesota Chamber of Commerce's
+                        board.
+                    </p>
+                </div>
+                <div class="main">
+                    <div class="main_content">
+                        
+                        <p class="main_content--withInset">
+                            <div class="main_content--inset rounded">
+                                In the past three years, the Minnesota Chamber
+                                of Commerce has spent $6.5 million on lobbying
+                                in Minnesota.
+                            </div>
+                                While we’re all pulling together to weather this
+                                storm and protect our families, fossil fuel
+                                businesses like Flint Hills Resources and the
+                                Minnesota Chamber of Commerce are quietly
+                                jockeying to protect their profits. In contrast
+                                to the leadership of Minnesota’s business
+                                community, the Chamber is trying to block
+                                common-sense legislation that would help
+                                hard-pressed families save money on their
+                                utility bills and conserve energy.
+                                <br />
+                                Our clean energy transition will create jobs for
+                                thousands of Minnesotans and a healthier, more
+                                prosperous future for the people and businesses
+                                of our state.
+                            
+                        </p>
+
+                        <p id='force-font-3' class="main_text--green">
+                            Let businesses like Target, 3M, General Mills and
+                            Cargill know that the Minnesota Chamber of Commerce
+                            is preventing Minnesota from being a national leader
+                            on climate change. It’s time for the Chamber to STOP
+                            doing the dirty work of a dying fossil fuel industry
+                            and STAND UP for the values of Minnesotans and our
+                            business community.
+                        </p>
+                    </div>
+
+                    <div class="main_vert-sidebar logo-bar">
+                        <p class="main_vert-sidebar--text bold-diminish">MN CHAMBER MEMBERS:</p>
+                        <img
+                            class="main_vert-sidebar--logo logo-item"
+                            src="https://mn350.org/wp-content/uploads/2020/04/coc_target_logo.jpg"
+                            alt="Target Corp logo"
+                        />
+                        <img
+                            class="main_vert-sidebar--logo logo-item"
+                            src="https://mn350.org/wp-content/uploads/2020/04/coc_best_buy_logo.svg"
+                            alt="Best Buy Corp logo"
+                        />
+                        
+                        <img
+                            class="main_vert-sidebar--logo logo-item"
+                            src="https://mn350.org/wp-content/uploads/2020/04/coc_cargill_logo.jpg"
+                            alt="Cargill Corp logo"
+                        />
+                        <img
+                            class="main_vert-sidebar--logo logo-item"
+                            src="https://mn350.org/wp-content/uploads/2020/04/coc_general_mills_logo.jpg"
+                            alt="General Mills logo"
+                        />
+                        
+                        <img
+                            class="main_vert-sidebar--logo logo-item"
+                            src="https://mn350.org/wp-content/uploads/2020/04/coc_tennant_logo.jpg"
+                            alt="Tennant Corp logo"
+                        />
+                    </div>
+                </div>
+            </article>
+
+            <div class="button-bar">
+                <a href="https://mn350.org/chamber-petition/" class="button-bar_button rounded">SIGN OUR PETITION NOW</a>
+                <a href="https://mn350.org/chamber-tweets/" class="button-bar_button rounded">SEND A TWEET NOW</a>
+                <a href="#" class="button-bar_button rounded">CAMPAIGN NEWS RELEASE</a>
+            </div>
+
+            <footer class="footer">
+                <p class="footer_notes">
+                    Research notes:<br/>
+                        a. MN Chamber of Commerce spent $4.3 million on lobbying in Minnesota in 2018 and 2019 (per the Minnesota Campaign Finance board)<br/>
+                            <span class="tab">i. $2.2 million of that total in 2019, most of all and twice as much as second place</span><br/>
+                        b. Flint Hills Resources spent $380k on lobbying in Minnesota in 2018 and $520k in 2019<br/>
+                        c. A lobbyist for Flint Hills Resources and the Koch Companies is on the board of directors for the MN Chamber of Commerce, MATTHEW LEMKE
+                </p>
+                <div class="footer_logos logo-bar">
+                    <span class="footer_sponsors logo-item bold-diminish">CAMPAIGN SPONSORS:</span>
+
+                    <img src="https://mn350.org/wp-content/uploads/2020/04/coc_mn350_logo.jpg" alt="MN350 logo" class="logo-item">
+
+                    <img src="https://mn350.org/wp-content/uploads/2020/04/coc_interfaith_power_logo.jpg" alt="MN Interfaith Power and Light logo" class="logo-item">
+
+                    <?xml version="1.0" encoding="UTF-8"?> <!-- Generator: Adobe Illustrator 23.0.6, SVG Export Plug-In . SVG Version: 6.00 Build 0) --> <svg class="logo-item"xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1" x="0px" y="0px" viewBox="0 0 644 153" style="enable-background:new 0 0 644 153;" xml:space="preserve"> <style type="text/css"> .st0{fill:none;} .st1{fill:#9DB7B4;} .st2{fill:#0074BC;} .st3{fill:#00B156;} .st4{fill:#004C6C;} </style> <title>bga-logo2019reg_CMYK</title> <g> <path class="st0" d="M-23-23.5"></path> <path class="st0" d="M-23,176.5"></path> <path class="st0" d="M667,176.5"></path> <path class="st0" d="M667-23.5"></path> </g> <g> <path class="st1" d="M241.9,130.5h-11.1l-3.1-8.8h-15.5l-3.1,8.8h-10.6L215,87.1h10.6L241.9,130.5z M225.4,113.8L220,98.3 l-5.4,15.6L225.4,113.8z"></path> <path class="st1" d="M283.4,130.5h-25.2V87.1h10.1v35h15V130.5z"></path> <path class="st1" d="M325.8,130.5h-25.2V87.1h10.1v35h15V130.5z"></path> <path class="st1" d="M353.2,130.5H343V87.1h10.2L353.2,130.5z"></path> <path class="st1" d="M412.8,130.5h-11.1l-3.1-8.8h-15.5l-3.1,8.8h-10.6L385.9,87h10.6L412.8,130.5z M396.3,113.8l-5.4-15.6 l-5.4,15.6H396.3z"></path> <path class="st1" d="M468.4,130.5H458l-19.1-29.5c0,0,0.2,5.2,0.2,9.8v19.6h-9.9V87.1H440l18.6,29.2c0,0-0.2-4.9-0.2-9.5V87.1h10 L468.4,130.5z"></path> <path class="st1" d="M525.2,125.4c-2.2,2.3-6.8,5.9-15.7,5.9c-12.8,0-22.8-8.4-22.8-22.4s10.1-22.4,22.8-22.4 c9,0,13.8,3.7,14.9,4.9l-3.2,8.4c-0.8-1.1-5.5-4.5-11.2-4.5c-7.4,0-13,4.9-13,13.4s5.9,13.4,13,13.4c4.4,0.1,8.6-1.5,11.7-4.6 L525.2,125.4z"></path> <path class="st1" d="M571.2,130.5h-28.7V87.1h28.1v8.1h-18v8.9h17v8.1h-17v10.1h18.6V130.5z"></path> <path class="st2" d="M3.5,71.4H3.2c-1.7-0.2-2.9-1.7-2.7-3.4c0,0,0,0,0,0C4.6,32.6,32.6,4.6,68,0.5c1.7-0.2,3.2,1,3.4,2.7 c0.2,1.7-1,3.2-2.7,3.4C36,10.4,10.3,36.1,6.5,68.7C6.4,70.3,5.1,71.4,3.5,71.4z M23,68.8C26.5,45.1,45.1,26.5,68.8,23 c1.7-0.3,2.7-1.9,2.4-3.6c-0.3-1.5-1.7-2.6-3.3-2.5c-26.4,3.9-47.1,24.6-51,51c-0.2,1.7,0.9,3.2,2.6,3.5c0.1,0,0.3,0,0.4,0 C21.5,71.4,22.8,70.3,23,68.8z M39.5,69c3-14.8,14.6-26.5,29.4-29.5c1.7-0.3,2.7-2,2.4-3.6s-2-2.7-3.6-2.4 c-17.2,3.5-30.7,17-34.2,34.2c-0.3,1.7,0.7,3.3,2.4,3.6c0.2,0,0.4,0.1,0.6,0.1C38,71.4,39.3,70.4,39.5,69L39.5,69z M56.3,69.4 c2.2-6,7-10.8,13-13c1.6-0.7,2.3-2.5,1.6-4c-0.6-1.4-2.1-2.2-3.6-1.8c-7.8,2.8-14,8.9-16.8,16.8c-0.7,1.6,0.1,3.4,1.6,4 c1.6,0.7,3.4-0.1,4-1.6C56.2,69.6,56.3,69.5,56.3,69.4L56.3,69.4z M153,68.4c0-1.7-1.4-3.1-3.1-3.1H97.1c-1.7,0-3.1,1.4-3.1,3.1 s1.4,3.1,3.1,3.1H150C151.7,71.4,153,70.1,153,68.4L153,68.4z M149,52c0-1.7-1.4-3.1-3.1-3.1H84.7c-1.7,0-3.1,1.4-3.1,3.1 c0,1.7,1.4,3.1,3.1,3.1h61.2C147.6,55.1,149,53.8,149,52C149,52.1,149,52,149,52z M140.8,35.7c0-1.7-1.4-3.1-3.1-3.1H84.7 c-1.7,0-3.1,1.4-3.1,3.1c0,1.7,1.4,3.1,3.1,3.1h53.1C139.4,38.8,140.8,37.4,140.8,35.7L140.8,35.7z M126.5,19.4 c0-1.7-1.4-3.1-3-3.1c0,0,0,0,0,0H84.7c-1.7,0.1-3,1.5-2.9,3.2c0.1,1.6,1.3,2.8,2.9,2.9h38.8C125.1,22.5,126.5,21.1,126.5,19.4z M104.1,3.1c0-1.7-1.4-3.1-3.1-3.1c0,0,0,0,0,0H84.7c-1.7,0-3.1,1.4-3.1,3.1c0,1.7,1.4,3.1,3.1,3.1H101 C102.7,6.1,104.1,4.8,104.1,3.1C104.1,3.1,104.1,3.1,104.1,3.1z"></path> <path class="st3" d="M84.7,152.6c-1.7,0.1-3.1-1.3-3.2-3c-0.1-1.6,1.2-3,2.8-3.2c32.6-3.8,58.3-29.5,62.1-62.1 c0.1-1.7,1.6-2.9,3.3-2.8c1.7,0.1,2.9,1.6,2.8,3.3c0,0.1,0,0.1,0,0.2c-4.1,35.4-32.1,63.4-67.6,67.5L84.7,152.6z M85.1,136.1 c26.4-3.9,47.1-24.6,51-51c0.2-1.7-0.9-3.2-2.6-3.5c-1.7-0.2-3.2,0.9-3.5,2.6c-3.5,23.7-22.1,42.3-45.8,45.8 c-1.7,0.2-2.8,1.8-2.6,3.5c0.2,1.5,1.5,2.6,3,2.6C84.8,136.1,85,136.1,85.1,136.1L85.1,136.1z M85.3,119.5 c17.2-3.5,30.7-17,34.2-34.2c0.3-1.7-0.7-3.3-2.4-3.6c-1.7-0.3-3.3,0.7-3.6,2.4l0,0c-3,14.8-14.6,26.4-29.4,29.4 c-1.7,0.3-2.7,1.9-2.4,3.6c0.3,1.4,1.5,2.5,3,2.5C84.9,119.6,85.1,119.6,85.3,119.5z M85.7,102.5c7.8-2.8,14-8.9,16.8-16.8 c0.7-1.6-0.1-3.4-1.6-4s-3.4,0.1-4,1.6c-0.1,0.1-0.1,0.3-0.1,0.4c-2.2,6.1-6.9,10.8-13,13c-1.6,0.7-2.3,2.5-1.6,4 C82.7,102.2,84.2,102.9,85.7,102.5L85.7,102.5z M59,84.7c0-1.7-1.3-3-3-3.1H3.1C1.4,81.6,0,83,0,84.7c0,1.7,1.4,3.1,3.1,3.1H56 C57.7,87.7,59,86.3,59,84.7z M71.4,101c0-1.7-1.4-3.1-3.1-3.1H7.1c-1.7,0-3.1,1.4-3.1,3.1c0,1.7,1.4,3.1,3.1,3.1h61.2 C70,104.1,71.4,102.7,71.4,101L71.4,101z M71.4,117.3c0-1.7-1.4-3.1-3.1-3.1h-53c-1.7,0-3.1,1.4-3.1,3.1c0,1.7,1.4,3.1,3.1,3.1 h53.1C70,120.4,71.4,119,71.4,117.3L71.4,117.3z M71.4,133.7c0-1.7-1.4-3.1-3.1-3.1H29.6c-1.7,0.1-3,1.5-2.9,3.2 c0.1,1.6,1.3,2.8,2.9,2.9h38.8C70,136.7,71.4,135.4,71.4,133.7C71.4,133.7,71.4,133.7,71.4,133.7L71.4,133.7z M71.4,150 c0-1.7-1.4-3.1-3.1-3.1H52c-1.7,0-3.1,1.4-3.1,3.1c0,1.7,1.4,3.1,3.1,3.1c0,0,0,0,0,0h16.3C70,153.1,71.4,151.7,71.4,150 C71.4,150,71.4,150,71.4,150L71.4,150z"></path> <path class="st4" d="M231.7,63c-2.8,2-6.7,2.8-11.1,2.8h-17.8V22.4h14.8c4,0,7.8,0.3,10.7,1.8c3.5,1.7,5.7,5.3,5.5,9.1 c0.1,4.2-2.5,8-6.4,9.6V43c5.4,1.3,9,5,9,10.3C236.7,57.2,234.9,60.8,231.7,63z M221.7,30.8c-1.2-0.8-2.3-0.9-4.5-0.9H213v10h4 c2.3,0,3.6-0.1,4.8-1c1.4-0.9,2.2-2.5,2.1-4.2C224,33.1,223.1,31.6,221.7,30.8L221.7,30.8z M224,48.2c-1.5-1.1-3.2-1.2-5.4-1.2H213 v11.1h5.6c2.2,0,3.9-0.1,5.4-1.2c2.4-1.8,2.9-5.1,1.2-7.5C224.8,48.9,224.5,48.5,224,48.2L224,48.2z"></path> <path class="st4" d="M279.8,65.8h-25.2V22.4h10.1v35h15L279.8,65.8z"></path> <path class="st4" d="M331.8,47.7c0,6.1-1.1,10.3-4.2,13.7c-3.1,3.3-7.7,5.2-14,5.2s-11-1.9-14.1-5.2c-3.1-3.3-4.1-7.6-4.1-13.7 V22.4h10.3v25.3c0,3.1,0.3,5.5,1.7,7.2c3.2,3.4,8.6,3.6,12.1,0.4c0.1-0.1,0.3-0.3,0.4-0.4c1.5-1.8,1.7-4.2,1.7-7.2V22.4h10.3V47.7z "></path> <path class="st4" d="M380.8,65.8H352V22.4h28.1v8.2h-18v8.9h17v8.1h-17v10h18.6L380.8,65.8z"></path> <path class="st4" d="M439.4,59.1c-2.2,1.9-7.4,7.4-19.3,7.4s-22.6-8-22.6-22.4s10.5-22.4,22.7-22.4c11.5,0,16.5,6,17.9,7.6 l-6.7,5.8c-2.8-3.2-6.9-5.1-11.1-5c-7,0-12.4,5.1-12.4,13.9S413.3,58,420.4,58s9.1-2.8,9.1-2.8v-6.4h-9.1V41h19.1V59.1z"></path> <path class="st4" d="M493.5,65.8h-11.8l-9.1-16.6h-3.2v16.6h-10.2V22.4h15.6c4.8,0,8.6,1,11.5,3.1c3.1,2.3,4.9,6,4.8,9.9 c0,8.2-5.3,11.5-8.5,12.5L493.5,65.8z M478.5,31.4c-1.3-0.9-2.9-1.1-5.2-1.1h-4v11.1h4c2.3,0,4-0.2,5.2-1.2c1.5-1,2.3-2.6,2.2-4.4 C480.8,34,479.9,32.3,478.5,31.4L478.5,31.4z"></path> <path class="st4" d="M538.2,65.8h-28.7V22.4h28.1v8.2h-18v8.9h17v8.1h-17v10h18.6V65.8z"></path> <path class="st4" d="M585.8,65.8h-28.7V22.4h28.1v8.2h-18v8.9h17v8.1h-17v10h18.6V65.8z"></path> <path class="st4" d="M644,65.8h-10.5l-19.1-29.5c0,0,0.2,5.2,0.2,9.8v19.7h-10V22.4h10.9l18.7,29.2c0,0-0.2-4.9-0.2-9.5V22.4h9.9 V65.8z"></path> </g> <g id="Layer_3"> <path class="st1" d="M592,98.9c-2.7,2.7-7.2,2.8-9.9,0c-2.7-2.7-2.8-7.2,0-9.9c2.7-2.7,7.2-2.8,9.9,0c1.3,1.3,2.1,3.1,2.1,5 C594.1,95.8,593.3,97.6,592,98.9z M582.8,89.8c-2.3,2.4-2.3,6.2,0.1,8.5c2.4,2.3,6.2,2.3,8.5-0.1c2.3-2.4,2.3-6.2-0.1-8.5 c-1.1-1.1-2.7-1.7-4.2-1.7C585.5,88,583.9,88.6,582.8,89.8z M586.9,90.1c0.7,0,1.4,0.1,2.1,0.3c0.8,0.3,1.3,1.1,1.2,1.9 c0,0.6-0.2,1.2-0.7,1.5c-0.3,0.2-0.7,0.3-1.1,0.4c0.5,0,1,0.3,1.3,0.7c0.2,0.3,0.4,0.8,0.4,1.2v0.6c0,0.2,0,0.4,0,0.6 c0,0.1,0,0.3,0,0.4v0.1h-1.2l0,0c0,0,0,0,0-0.1v-0.8c0.1-0.7-0.2-1.4-0.7-1.8c-0.5-0.2-1-0.3-1.5-0.2h-1.1v3h-1.4v-7.7L586.9,90.1z M588.4,91.4c-0.5-0.2-1.1-0.3-1.6-0.3h-1.1v2.8h1.2c0.4,0,0.9,0,1.3-0.2c0.5-0.2,0.8-0.7,0.8-1.2C588.9,92,588.8,91.6,588.4,91.4 L588.4,91.4z"></path> </g> </svg> 
+
+                    <img src="https://mn350.org/wp-content/uploads/2020/04/coc_env_mn_logo.jpg" alt="Environment MN logo" class="logo-item">
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

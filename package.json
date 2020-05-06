@@ -1,0 +1,12 @@
+{
+  "name": "coc_landing_page",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "inline-css": "^2.6.3"
+  },
+  "dependencies": {
+    "replace-in-file": "^6.0.0"
+  }
+}
